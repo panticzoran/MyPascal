@@ -10,4 +10,5 @@ begin
 	n := 10;
 	for i := 1 to n do
 		writeln('Line number', i);
+writeln('The program finished running.')
 end.
