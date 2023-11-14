@@ -1,10 +1,13 @@
-program HelloWorld;
-uses crt;
+program SimplePascalProgram;
+uses crt; (* use the computer monitor for output*)
 
 var i: integer;
+var n: integer;
 
-(* Here the main program block starts *)
+(* The for loop to write a piece of text n times *)
+
 begin
-	for i := 1 to 10 do
-		writeln('Hello, World!!!');
+	n := 10;
+	for i := 1 to n do
+		writeln('Line number', i);
 end.
