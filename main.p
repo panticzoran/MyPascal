@@ -20,7 +20,7 @@ for i := 1 to nrEl do
 	if (el > 0) then
  		begin
  		nrPos := nrPos + 1;
-	 	if nrPos > 1 then
+	 	if nrPos > 1 then (* 2nd and the following positive numbers*)
 	 		begin
 	 		if el < prevEl then
 				begin
@@ -28,7 +28,7 @@ for i := 1 to nrEl do
 				minEl := el;
 				end;
 			end
-		else
+		else (* the first positive number is found *)
 			begin
 			prevEl := el;
 	 		minEl := el;
