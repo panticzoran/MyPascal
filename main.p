@@ -1,20 +1,16 @@
-program NumberOfMinimalElements;
+program Find2MinimalElements;
 uses crt;
 
-(* In the array of N numbers, find the smalest element, and count how many of those are there *)
+(* In the array of N numbers, find the 2 smalest elements, and print them in ascending order *)
 
 var 
-nrEl , el , i, minEl, howManyMins : integer;
+nrEl , el , i, minElSmall, minElBig : integer;
 
 begin
 
 write('Enter the number of elements: ');
 read(nrEl);
 
-write('Element nr.1: ');
-read(el);
-minEl := el;
-howManyMins := 1;
 
 for i := 2 to nrEl do
 	begin
