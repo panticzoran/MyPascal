@@ -17,24 +17,23 @@ maxEl := el;
 pos1st := 1;
 posLast := 1;
 
-
 for i := 2 to nrEl do
 begin
 
- 	write('Element nr.', i , ': ');
- 	read(el);
+  write('Element nr.', i , ': ');
+  read(el);
 
-	if el > maxEl then
- 	begin
-		maxEl := el;
- 		pos1st := i;
-	end;
+  if el > maxEl then
+  begin
+    maxEl := el;
+    pos1st := i;
+  end;
 
- 	if el = maxEl then
-	begin
- 		posLast := i;
-	end;
-	
+  if el = maxEl then
+  begin
+    posLast := i;
+  end;
+  
 end;
 
 write('The first occurence of the biggest element ', maxEl, ' is ', pos1st, ' and the last occurence is ', posLast);
