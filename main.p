@@ -15,12 +15,11 @@ read(nrEl);
 
 write('Element nr.1: ');
 read(el);
-previousEl := el;
 isJigsaw := true;
 
 for i := 2 to nrEl do
 begin
-
+  previousEl := el;
   write('Element nr.', i , ': ');
   read(el);
 
