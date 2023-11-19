@@ -1,21 +1,22 @@
-program FindPositionOf1stLastMaxElements;
+program IsArrayAJigsaw;
 uses crt;
 
-(* In the array of N numbers, find the biggest element, and print it's first and last position *)
+(* Find out if the array is a "jigsaw" so the 1st element is smaller than 2nd, 3rd smaller than 2nd and 4th, etc *)
 
 var 
-nrEl , el , i , maxEl, pos1st, posLast : integer;
+nrEl , el , i : integer;
+previousEl : integer;
+isJigsaw , isBigger : boolean;
 
 begin
 
-write('Enter the number of elements: ');
+write('Enter the number of elements in the array: ');
 read(nrEl);
 
 write('Element nr.1: ');
 read(el);
-maxEl := el;
-pos1st := 1;
-posLast := 1;
+previousEl := el;
+isJigsaw := true;
 
 for i := 2 to nrEl do
 begin
@@ -23,19 +24,22 @@ begin
   write('Element nr.', i , ': ');
   read(el);
 
-  if el > maxEl then
-  begin
-    maxEl := el;
-    pos1st := i;
-  end;
-
-  if el = maxEl then
-  begin
-    posLast := i;
-  end;
+  if (i mod 2 = 0) then
+    if el < previousEl then
+    begin
+      isJigsaw := false;
+      break;
+    end
+  else
+    if el > previousEl then
+    begin
+      isJigsaw := false;
+      break;
+    end;
   
 end;
 
-write('The first occurence of the biggest element ', maxEl, ' is ', pos1st, ' and the last occurence is ', posLast);
+if isJigsaw then write('The array is a jigsaw')
+else write('The array is not a jigsaw');
 
 end.
