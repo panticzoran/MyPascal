@@ -1,22 +1,17 @@
-Program TowersOfHanoi(input,output);
+PROGRAM RightTriangles (output);
+(* Draw two right triangles filled with *** *)
+VAR row, column : integer;
 
-Var
-   disks:   integer;
-
-Procedure Hanoi(source, temp, destination: char;  n: integer);
-
-   begin
-   if n > 0 then
-      begin
-      Hanoi(source, destination, temp, n - 1);
-      writeln('Move disk ',n:1,' from peg ',source,' to peg ',destination);
-      Hanoi(temp, source, destination, n - 1);
-      end;
-   end;
-
-begin
-write('Enter the number of disks: ');
-readln(disks);
-writeln('Solution:');
-Hanoi('A','B','C',disks);
-end.
+BEGIN (* RightTriangles *)
+FOR row := 1 TO 10 DO BEGIN
+FOR column := 1 TO row DO Write (' * ');
+Writeln;
+END;
+Writeln;
+FOR row := 4 DOWNTO 1 DO BEGIN FOR column := 1 TO row DO Write (* * *);
+Writeln;
+END;
+END. (* RightTriangles *)
+(* write only as many ’*’ as *) (* the number of the row *)
+(* we are on *)
+(* Now do the reverse of the *) (* above for loop *)
