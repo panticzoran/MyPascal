@@ -9,32 +9,34 @@ var
 checkUntil , i : Longint;
 
 
-function isProperDivisor(nr, divisor : Longint) : boolean;
+function isProperDivisor(nr1, divisor : Longint) : boolean;
 begin
-  isProperDivisor := (nr mod divisor = 0);
+  isProperDivisor := ((nr1 mod divisor) = 0);
 end;
 
-function isPerfect(nr : Longint) : boolean;
+function isPerfect(nr2 : Longint) : boolean;
 var
   sumDivisors , j : integer;
 begin
-  sumDivisors := 1;
-  for j := 2 to nr do
+  sumDivisors := 0;
+  for j := 1 to nr2-1 do
   begin
-    if isProperDivisor(nr, j) then sumDivisors := sumDivisors +1;
+    if isProperDivisor(nr2, j) then sumDivisors := sumDivisors + j;
   end;
-  isPerfect := (sumDivisors = nr);
+  isPerfect := (sumDivisors = nr2);
 end;
 
 
 begin
 
-checkUntil := 100000;
+checkUntil := 10000;
 writeln('Numbers to be checked: ' , checkUntil);
 
 for i := 1 to checkUntil do
 begin
-  if isPerfect(i) then writeln(i)
+  if isPerfect(i) then writeln('Found: ', i)
 end;
+
+writeln('Done.')
 
 end.
