@@ -30,11 +30,11 @@ end;
 
 begin
 
-checkUntil := 10000;
-position := 10;
+checkUntil := 50000000;
+position := 8;
 gotoXY(1,position);
 writeln('Numbers to be checked: ' , checkUntil);
-position := position +1;
+position := position + 2;
 
 for i := 1 to checkUntil do
 begin
@@ -42,13 +42,13 @@ begin
   write('Checking: ', i);
   if isPerfect(i) then 
   begin
-    position := position +1;
     gotoXY(1,position);
-    write('Found: ', i)
+    write('Found: ', i , '          ');
+    position := position + 1;
   end;
 end;
 
-position := position +1;
+position := position + 1;
 gotoXY(1,position);
 writeln('Done.')
 
