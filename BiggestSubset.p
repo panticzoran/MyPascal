@@ -1,4 +1,4 @@
-program BiggestSubsetRandomized;
+program BiggestSubset;
 uses crt;
 
 (* In array of N elements find the biggest subset of repeating numbers, and print what numbert it is, what is it's position and how big is the subset *)
@@ -10,13 +10,11 @@ theIndex1stElement , theBiggestSize, theFinalElement : Longint;
 
 begin
 
-randomize;
-n := 40;
-writeln('The number of elements in the array: ' , n);
+write('Enter the number of elements: ');
+read(n);
 
-writeln('The elements of the array are: ');
-element := round(Random * 4 + 1);
-writeln('1: ' , element);
+write('Element nr.1: ');
+read(element);
 
 theElement := element;
 theFinalElement := element;
@@ -30,10 +28,9 @@ theBiggestSize := 1;
 
 for i := 2 to n do
 begin
-
+  write('Element nr.', i , ': ');
   prevElement := element;
-  element := round(Random * 4 + 1);
-  writeln(i , ': ' , element);
+  read(element);
 
   if element = prevElement then
     begin
