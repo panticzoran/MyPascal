@@ -6,37 +6,50 @@ The smallest perfect number is 6, which is the sum of 1, 2, and 3.
 Other perfect numbers are 28, 496, and 8128. *)
 
 var
-checkUntil , i : Longint;
+checkUntil , i , position: Longint;
 
 
-function isProperDivisor(nr1, divisor : Longint) : boolean;
+function isProperDivisor(nr, divisor : Longint) : boolean;
 begin
-  isProperDivisor := ((nr1 mod divisor) = 0);
+  isProperDivisor := nr mod divisor = 0;
 end;
 
-function isPerfect(nr2 : Longint) : boolean;
+
+function isPerfect(nr : Longint) : boolean;
 var
   sumDivisors , j : integer;
 begin
   sumDivisors := 0;
-  for j := 1 to nr2-1 do
+  for j := 1 to nr-1 do
   begin
-    if isProperDivisor(nr2, j) then sumDivisors := sumDivisors + j;
+    if isProperDivisor(nr, j) then sumDivisors := sumDivisors + j;
   end;
-  isPerfect := (sumDivisors = nr2);
+  isPerfect := sumDivisors = nr;
 end;
 
 
 begin
 
 checkUntil := 10000;
+position := 10;
+gotoXY(1,position);
 writeln('Numbers to be checked: ' , checkUntil);
+position := position +1;
 
 for i := 1 to checkUntil do
 begin
-  if isPerfect(i) then writeln('Found: ', i)
+  gotoXY(1,position);
+  write('Checking: ', i);
+  if isPerfect(i) then 
+  begin
+    position := position +1;
+    gotoXY(1,position);
+    write('Found: ', i)
+  end;
 end;
 
+position := position +1;
+gotoXY(1,position);
 writeln('Done.')
 
 end.
