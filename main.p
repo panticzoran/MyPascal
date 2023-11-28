@@ -1,64 +1,58 @@
-program MaxNumberOfNeighbouringPairNrsRandomized;
+
+
+
+
+program BiggestSubset;
 uses crt;
 
-(* In array of N elements find the maximal number of sequential pair numbers *)
+(* In array of N elements find the biggest subset of repeating numbers, and print what numbert it is, what is it's position and how big is the subset *)
 
 var
 element , n , i : Longint;
-nrPairNrs , maxNrPairNrs , prevElement , firstPair : Longint;
+prevElement , index1stElement , biggestSize, theElement : Longint;
+theIndex1stElement , theBiggestSize, theFinalElement : Longint;
 
 begin
 
-randomize;
-element := 0;
+write('Enter the number of elements: ');
+read(n);
 
-n := 40;
-writeln('The number of elements in the array: ' , n);
-writeln('The elements of the array are: ');
-element := round(Random * 100 + 1);
-writeln('1: ' , element);
+write('Element nr.1 : ');
+read(element);
 prevElement := element;
-element := round(Random * 100 + 1);
-writeln('2: ' , element);
-nrPairNrs := 0;
-maxNrPairNrs := 0;
-firstPair := 0;
-
-if ((element mod 2 = 0) and (prevElement mod 2 = 0)) then
-  begin
-  nrPairNrs := 1;
-  maxNrPairNrs := 1;
-  firstPair := 1;
-  end;
-if (element mod 2 = 0) then
-  begin
-  nrPairNrs := 1;
-  firstPair := 2;
-  end;
-prevElement := element;
+theElement := element;
+theFinalElement := element;
+index1stElement := 1;
+theIndex1stElement := 1;
+biggestSize := 1;
+theBiggestSize := 1;
 
 
-for i := 3 to n do
-  begin
-  element := round(Random * 100 + 1);
-  writeln(i , ': ' , element);
-  if ((element mod 2 = 0) and (prevElement mod 2 = 0)) then 
+for i := 2 to n do
+begin
+  write('Element nr.', i , ': ');
+  read(element);
+
+  if element = prevElement
+  then
     begin
-    nrPairNrs := nrPairNrs + 1;
-    if nrPairNrs >= maxNrPairNrs then 
-      begin
-      maxNrPairNrs := nrPairNrs + 1;
-      firstPair := i - maxNrPairNrs + 1;
-      end;
-    end
-  else
-    begin
-    nrPairNrs := 0;
+    theElement := element;
+    biggestSize := biggestSize + 1;
+    index1stElement := i - biggestSize;
     end;
-  prevElement := element;
-  end;
+
+
+  if biggestSize >= theBiggestSize
+  then
+    begin
+    theBiggestSize := biggestSize;
+    theFinalElement := theElement;
+    theIndex1stElement := index1stElement;
+    end;
+end;
+  
 
 writeln;
-write('The maximal number of sequential pair numbers is: ', maxNrPairNrs , ' at the position ' , firstPair);
+write('The biggest subset is having  ', theBiggestSize , ' elements ', theFinalElement , ' at the position ' , theIndex1stElement);
 
 end.
