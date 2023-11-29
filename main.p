@@ -1,5 +1,5 @@
-program IsNumberPerfect;
-uses crt;
+program IsNumberPerfectFormatedPrintAndTiming;
+uses crt , sysutils;
 
 (* Perfect number, a positive integer that is equal to the sum of its proper divisors.
 The smallest perfect number is 6, which is the sum of 1, 2, and 3. 
@@ -33,7 +33,7 @@ begin
 checkUntil := 50000000;
 position := 8;
 gotoXY(1,position);
-writeln('Numbers to be checked: ' , checkUntil);
+writeln('Numbers to be checked: 1-' , checkUntil);
 position := position + 2;
 
 for i := 1 to checkUntil do
@@ -43,7 +43,10 @@ begin
   if isPerfect(i) then 
   begin
     gotoXY(1,position);
-    write('Found: ', i , '          ');
+    (*write('Found: ', i , ' on ', DateTimeToStr(Now));  --> Date & time without milliseconds*)
+    (*write('Found: ', i , ' on ', FormatDateTime('hh:nn:ss:zzz', Now));  --> Time with milliseconds*)
+    (*write('Found: ', i , ' on ', FormatDateTime('dd-mm-yy hh:nn:ss:zzz', Now)); --> Date & time with ms*)
+    write('Found: ', i , ' on ', FormatDateTime('dd-mm-yy hh:nn:ss:zzz', Now));
     position := position + 1;
   end;
 end;
