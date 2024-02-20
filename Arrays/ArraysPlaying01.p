@@ -24,9 +24,9 @@ for i := 1 to nrElements do
 
 writeln('Here is the array generated');
 for i := 1 to nrElements do
-begin
-writeln('Element[', i, '] = ', element[i] );
-end;
+  begin
+  writeln('Element[', i, '] = ', element[i] );
+  end;
 
 writeln;
 
@@ -36,14 +36,14 @@ write('Index of the element to be thrown out: ');
 read(elementOut);
 
 for i := (elementOut + 1) to nrElements do
-begin
-element[i-1] := element[i]
-end;
+  begin
+  element[i-1] := element[i]
+  end;
 
 writeln('Here is the array without that element');
-for i := 1 to (nrElements - 1) do
-begin
-writeln('Element[', i, '] = ', element[i] );
-end;
+  for i := 1 to (nrElements - 1) do
+  begin
+  writeln('Element[', i, '] = ', element[i] );
+  end;
 
 end.
