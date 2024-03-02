@@ -1,44 +1,45 @@
-program FibonacciSequence;
+program ArrayPlaying02;
 
-(* Establishing Fibonacci sequence and playing a bit with it *)
+(* More playing with arrays *)
 
 uses crt;
 
-(* Generates an array filled with random numbers *)
-
 var
-i, nrElements : Longint;
-element, fibonacciArray, differenceArray : array [1..100000] of integer;
+i, nrElements, thirdOfNrElements : Longint;
+firstArray, secondArray : array [1..100000] of integer;
 
 begin
 
-randomize;
+thirdOfNrElements := 1;
 
-write('How many elements the Fibonacci array should have: ');
-read(nrElements);
-
-(* Generates Fibonacci array *)
-fibonacciArray[1] := 1;
-fibonacciArray[2] := 1;
-for i := 3 to nrElements do
+while thirdOfNrElements <> 0 do
   begin
-  fibonacciArray[i] :=  fibonacciArray[i - 1] + fibonacciArray[i - 2] (* generate Fibonacci array *)
+  write('How many elements the array should have: ');
+  read(nrElements);
+  thirdOfNrElements := nrElements mod 3;
   end;
 
 for i := 1 to nrElements do
   begin
-  element[i] := round(Random * 99 + 1); (* generate array with random numbers from 1 to 100 *)
+  read(firstArray[i]);
   end;
+
+for i := 1 to thirdOfNrElements do
+  begin
+  secondArray[i] := firstArray[i] + firstArray[i + thirdOfNrElements] + firstArray[i + thirdOfNrElements]
+  end;
+
+
+writeln('Here are the arrays');
 
 for i := 1 to nrElements do
   begin
-  differenceArray[i] := fibonacciArray[i] - element[i]; (* generate array that contains differences between the two above arrays *)
+  writeln('#[', i, '] = ', firstArray[i])
   end;
 
-writeln('Here are the three arrays - Fibonacci, random and their difference');
-for i := 1 to nrElements do
+for i := 1 to thirdOfNrElements do
   begin
-  writeln('#[', i, '] = ', fibonacciArray[i], ' ', element[i], ' ', differenceArray[i]);
+  writeln('#[', i, '] = ', secondArray[i])
   end;
 
 writeln;
