@@ -1,54 +1,67 @@
-program ArraysPlaying02;
+program CountUniqueArrayElements;
 
-(* More playing with arrays *)
+(* Counting unique elements in an array, showing the number of their occurence *)
 
 uses crt;
 
 var
-i, nrElements, thirdOfNrElements : Longint;
-firstArray, secondArray : array [1..100000] of integer;
+i, j, nrElements, elementNr : Longint;
+theArray, uniqueElements, nrUniqueElements : array [1..100000] of integer;
 
 begin
 
-thirdOfNrElements := 1;
+randomize;
 
-while thirdOfNrElements <> 0 do
-  begin
-  write('How many elements the array should have: ');
-  read(nrElements);
-  thirdOfNrElements := nrElements mod 3;
-  end;
-
-thirdOfNrElements := nrElements div 3;
+write('How many elements the array should have: ');
+read(nrElements);
 
 for i := 1 to nrElements do
   begin
-  read(firstArray[i]);
+  theArray[i] := round(Random * 99 + 1); (* generate random numbers from 1 to 100 *)
+  nrUniqueElements[i] := 0; (* zeroing the array having the count of the unique elements *)
   end;
 
-for i := 1 to thirdOfNrElements do
-  begin
-  secondArray[i] := firstArray[i] + firstArray[i + thirdOfNrElements] + firstArray[i + 2 * thirdOfNrElements]
-  end;
-
-
-writeln('Here is the first array');
-
+writeln('Here is the array generated');
 for i := 1 to nrElements do
   begin
-  writeln('#[', i, '] = ', firstArray[i]);
+  writeln('Element[', i, '] = ', theArray[i]);
   end;
 
 writeln;
 
-writeln('Here is the first array');
+uniqueElements[1] := theArray[1];
+nrUniqueElements[1] := 1;
+elementNr := 1;
+nrUniqueElements[1] := 1;
 
-for i := 1 to thirdOfNrElements do
+for i := 1 to nrElements do
   begin
-  writeln('#[', i, '] = ', secondArray[i]);
+
+  for j := 1 to elementNr do
+    begin
+      if theArray[i] = uniqueElements[j] then
+      begin
+      nrUniqueElements[j] := nrUniqueElements[j] + 1;
+      end
+      else
+      begin
+        elementNr := elementNr + 1;
+        uniqueElements[elementNr] := theArray[i];
+        nrUniqueElements[j] := nrUniqueElements[j] + 1;
+      end;
+    end;
+
+  
   end;
 
-writeln;
+writeln('Here is the unique elements and their number of occurence:');
 
+for i := 1 to nrElements do
+  begin
+  writeln('Element[', i, '] = ', uniqueElements[i], ' occurs ', nrUniqueElements[i], ' times');
+  end;
+
+
+writeln;
 
 end.
