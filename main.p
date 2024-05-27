@@ -7,67 +7,48 @@ uses crt;
 (* Generates a matrix filled with random numbers *)
 
 var
-i, j, columnSum, nrRows, nrColumns : Longint;
-elementOriginal : array [1..100,1..100] of integer; (*Take care that you do not make the array of big size*)
-elementNew : array [1..100,1..100] of integer;
+stringic, noviStringic : string;
+i : longint;
+
 
 begin
 
-randomize;
+stringic := '';
+noviStringic := '';
 
-write('How many rows the matrix should have: ');
-read(nrRows);
-write('How many columns the array should have: ');
-read(nrColumns);
+write('Please input the string: ', stringic);
+read(stringic);
+writeln;
+writeln('The string is: ', stringic);
+writeln;
+write('The length of the string: ', stringic, ' is ', length(stringic));
+writeln;
+write('The first character of the string: ', stringic, ' is ', stringic[1]);
+writeln;
+write('ASCII table');
+writeln;
+write('==================================');
+writeln;
+for i := 0 to 255 do
+begin
+write(i, ' ', chr(i), ' ')
+end;
+writeln;
+write('==================================');
+writeln;
+write('Concatenated 2 times the string: ', stringic, ' is ', concat(stringic, stringic));
 writeln;
 
-(* Populating both matrices *)
-for i := 1 to nrRows do
-begin
-  for j := 1 to nrColumns do
-  begin
-  elementOriginal[i,j] := round(Random * 8 + 1); (* generate random numbers from 1 to 9 *)
-  elementNew[i,j] := elementOriginal[i,j]
-  end;
-end;
-
+Setlength(stringic,100);
+FillChar(stringic[1],100,#65);
+Writeln ('"', stringic,'"');
 writeln;
-writeln('Here is the matrix generated');
-for i := 1 to nrRows do
-begin
-  for j := 1 to nrColumns do
-  begin
-  write(elementOriginal[i,j], ' ');
-  end;
-  writeln;
-end;
 
-(* Calculating sum of the columns in the new matrix *)
-for i := 1 to nrColumns do
-begin
-  columnSum := 0;
-  for j := 1 to nrRows do
-  begin
-  columnSum := columnSum + elementNew[j,i];
-  end;
-  elementNew[nrRows+1,i] := columnSum;
-end;
-
-
+i := 12;
+str(i,novistringic);
+write('Str of ', i, ' is ', noviStringic);
 writeln;
-writeln('Here is the new matrix, with the last row being sums of the columns');
-for i := 1 to nrRows do
-begin
-  for j := 1 to nrColumns do
-  begin
-  write(' ', elementNew[i,j], ' ');
-  end;
-  writeln;
-end;
-for j := 1 to nrColumns do
-begin
-write(elementNew[nrRows+1,j], ' ');
-end;
+
 
 writeln;
 
