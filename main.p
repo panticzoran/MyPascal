@@ -1,5 +1,6 @@
 program MatrixSumOfColumns;
 
+
 (* Simple example with 2 dimensional arrays = matrices *)
 
 uses crt;
@@ -9,6 +10,7 @@ uses crt;
 var
 stringic, noviStringic : string;
 i : longint;
+
 
 
 begin
@@ -49,6 +51,8 @@ str(i,novistringic);
 write('Str of ', i, ' is ', noviStringic);
 writeln;
 
+readStr('123', i);
+write('i = ', i);
 
 writeln;
 
