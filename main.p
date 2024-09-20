@@ -1,59 +1,53 @@
-program MatrixSumOfColumns;
+program PlayingWithRecords;
 
 
-(* Simple example with 2 dimensional arrays = matrices *)
+(* Playing with records in Pascal *)
 
 uses crt;
 
-(* Generates a matrix filled with random numbers *)
-
-var
-stringic, noviStringic : string;
-i : longint;
-
-
-
-begin
-
-stringic := '';
-noviStringic := '';
-
-write('Please input the string: ', stringic);
-read(stringic);
-writeln;
-writeln('The string is: ', stringic);
-writeln;
-write('The length of the string: ', stringic, ' is ', length(stringic));
-writeln;
-write('The first character of the string: ', stringic, ' is ', stringic[1]);
-writeln;
-write('ASCII table');
-writeln;
-write('==================================');
-writeln;
-for i := 0 to 255 do
-begin
-write(i, ' ', chr(i), ' ')
+(* Define the type of record *)
+type
+books = record
+  bookTitle: packed array [1..50] of char;
+  bookAuthor: packed array [1..50] of char;
+  bookSubject: packed array [1..50] of char;
+  BookId: integer;
 end;
-writeln;
-write('==================================');
-writeln;
-write('Concatenated 2 times the string: ', stringic, ' is ', concat(stringic, stringic));
-writeln;
 
-Setlength(stringic,100);
-FillChar(stringic[1],100,#65);
-Writeln ('"', stringic,'"');
-writeln;
+(* Declare the variables of a type of "books" *)
+var
+book1, book2: books;
 
-i := 12;
-str(i,novistringic);
-write('Str of ', i, ' is ', noviStringic);
-writeln;
 
-readStr('123', i);
-write('i = ', i);
+(* Declaring the procedure for printing books *)
+procedure printBook(var book: books);
+begin
+  writeln('Book title: ', book.bookTitle);
+  writeln('Book author: ', book.bookAuthor);
+  writeln('Book subject: ', book.bookSubject);
+  writeln('Book identifier: ', book.BookId);
+end;
 
-writeln;
+begin
+
+(* book 1 specification *)
+book1.bookTitle  := 'Pascal Programming';
+book1.bookAuthor := 'Muhammad Ali'; 
+book1.bookSubject := 'Pascal Programming Tutorial';
+book1.BookId := 22334;
+
+(* book 2 specification *)
+book2.bookTitle := 'Life hacks';
+book2.bookAuthor := 'Smart Guy';
+book2.bookSubject := 'Tutorial for life hacks';
+book2.BookId := 11223;
+
+writeln('------------------');
+printBook(book1);
+writeln('');
+
+writeln('------------------');
+printBook(book2);
+writeln('');
 
 end.
