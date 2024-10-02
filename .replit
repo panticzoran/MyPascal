@@ -3,6 +3,7 @@ run = "./main"
 entrypoint = "main.p"
 
 hidden = ["*.o"]
+modules = ["python-3.11"]
 
 [nix]
 channel = "stable-21_11"
