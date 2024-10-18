@@ -35,5 +35,9 @@ begin
   writeln(currentNode^.dataOfNode); { Printing the value of the node }
   currentNode := currentNode^.nextNodeAddr; { Moving the pointer to the next node}
 end;
+
+dispose(headNode); { Releasing memory }
+dispose(secondNode);
+dispose(thirdNode);
   
 end.
