@@ -7,6 +7,7 @@ var
   numberPointer: ^integer; { pointer to an integer, data type stored at that location in the memory }
   numberAddress: ^word; { address, pointer to a word data type variable }
   nilPointer: ^string; { pointer to a string }
+  aString: string;
 
 begin
 
@@ -23,20 +24,25 @@ begin
 
   if nilPointer <> nil then
   begin
-    writeln('The pointer points to something');
+    writeln('The nilPointer points to something');
   end
   else
   begin
-    writeln('The pointer points to nothing');
+    writeln('The nilPointer points to nothing');
   end;
 
-  if numberPointer <> nil then
-  begin
-    writeln('The pointer points to something');
-  end
-  else
-  begin
-    writeln('The pointer points to nothing');
-  end;
+aString := 'sMthNg';
+nilPointer := addr(aString); { now the pointer points to something }
+
+if nilPointer <> nil then
+begin
+  writeln('The nilPointer points to something');
+  write('(', nilPointer^ , ')')
+end
+else
+begin
+  writeln('The nilPointer points to nothing');
+  write('(', nilPointer^ , ')')
+end;
   
 end.
