@@ -1,4 +1,4 @@
-program PlayingWithProcedures;
+program PlayingWithProcedures01;
 
 { Procedure for just printing anything }
 procedure odstampajBiloSta ();
